@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Kotlin MVVM Template</string>
+
+
+
+
+
+
+    <string name="nav_first">Home</string>
+    <string name="nav_second">Second</string>
+    <string name="nav_third">Third</string>
+    <string name="nav_fourth">Fourth</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</resources>

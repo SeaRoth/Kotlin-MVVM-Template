@@ -1,0 +1,42 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--NAV-->
+    <style name="NavTextColorActivePlanner" parent="OpenSans_Bold">
+        <item name="android:textColor">@color/planner_primary</item>
+    </style>
+
+    <style name="NavTextColorActiveCalendar" parent="OpenSans_Bold">
+        <item name="android:textColor">@color/network_primary</item>
+    </style>
+
+    <style name="NavTextColorActiveGoals" parent="OpenSans_Bold">
+        <item name="android:textColor">@color/goals_primary</item>
+    </style>
+
+    <style name="NavTextColorActiveWork" parent="OpenSans_Bold">
+        <item name="android:textColor">@color/work_primary</item>
+    </style>
+
+</resources>
