@@ -1,7 +1,7 @@
-package com.searoth.planner.infrastructure.ui.base
+package com.searoth.template.infrastructure.ui.base
 
-import com.searoth.planner.R
-import com.searoth.planner.databinding.ItemNavBinding
+import com.searoth.template.R
+import com.searoth.template.databinding.ItemNavBinding
 import com.xwray.groupie.databinding.BindableItem
 
 class LambaNavItem(val label: Int, val lambda: () -> Unit) : BindableItem<ItemNavBinding>() {

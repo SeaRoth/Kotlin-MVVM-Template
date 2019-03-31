@@ -14,7 +14,6 @@ import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
 import android.widget.TextView
-import android.widget.ViewAnimator
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -25,13 +24,21 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.github.florent37.viewanimator.ViewAnimator
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
-import com.searoth.planner.infrastructure.ui.base.NavHeaderViewModel
 import com.searoth.template.R
+import com.searoth.template.ext.withNewSection
+import com.searoth.template.infrastructure.common.utils.dpToPx
+import com.searoth.template.infrastructure.ui.features.profile.ProfileActivity
+import com.searoth.template.infrastructure.ui.home.HomeActivity
+import com.searoth.template.infrastructure.ui.notification.NotificationActivity
+import com.searoth.template.infrastructure.ui.planets.PlanetsActivity
+import com.searoth.template.infrastructure.ui.weather.WeatherActivity
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.OnItemClickListener
 import com.xwray.groupie.ViewHolder
+import kotlinx.android.synthetic.main.header_nav.*
 
 import timber.log.Timber
 
@@ -56,7 +63,7 @@ abstract class BaseActivity : AppCompatActivity(), BottomNavigationView.OnNaviga
      * To change from the full menu override this
      */
     open fun inflateOptionsMenu(menu: Menu) {
-        return menuInflater.inflate(R.menu.menu_planner, menu)
+        return menuInflater.inflate(R.menu.menu_home, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -77,24 +84,24 @@ abstract class BaseActivity : AppCompatActivity(), BottomNavigationView.OnNaviga
             return true
         }
         when (item.itemId) {
-            R.id.action_planner -> {
-                startActivity(createNavIntent<PlannerActivity>())
+            R.id.action_home -> {
+                startActivity(createNavIntent<HomeActivity>())
             }
-            R.id.action_network -> {
-                startActivity(createNavIntent<NetworkActivity>())
+            R.id.action_weather -> {
+                startActivity(createNavIntent<WeatherActivity>())
             }
-            R.id.action_goals -> {
-                startActivity(createNavIntent<GoalsListActivity>())
+            R.id.action_planets -> {
+                startActivity(createNavIntent<PlanetsActivity>())
             }
-            R.id.action_work -> {
-                startActivity(createNavIntent<WorkActivity>())
+            R.id.action_notifications -> {
+                startActivity(createNavIntent<NotificationActivity>())
             }
         }
         return false
     }
 
     private fun figureHowToSlideActivityLeftOrRight() {
-        if(selectedItem == R.id.action_network){
+        if(selectedItem == R.id.action_weather){
 
         }
     }
@@ -112,27 +119,19 @@ abstract class BaseActivity : AppCompatActivity(), BottomNavigationView.OnNaviga
                 .dp().translationX(-200f, 0f)
                 .duration(500)
                 .start()
-
-//            val matrix = iv_nav_header.imageMatrix
-//            val imageW = iv_nav_header.drawable.intrinsicWidth.toFloat()
-//            val screenW = resources.displayMetrics.widthPixels.toFloat()
-//            val ratio = screenW.div(imageW)
-//                //(screenW / imageW).toFloat()
-//            matrix.postScale(ratio, ratio)
-//            iv_nav_header.imageMatrix = matrix
         }
     }
 
-    private var selectedItem = R.id.action_planner
+    private var selectedItem = R.id.action_home
     fun setupBottomNav(bn: BottomNavigationView, selected: Int, iconColor: Int) {
         bn.setOnNavigationItemSelectedListener(this)
         bn.itemIconTintList = ColorStateList.valueOf(ContextCompat.getColor(this, iconColor))
         bn.itemTextAppearanceInactive = R.style.NavTextColorInActive
         when (selected) {
-            R.id.action_planner -> bn.itemTextAppearanceActive = R.style.NavTextColorActivePlanner
-            R.id.action_network -> bn.itemTextAppearanceActive = R.style.NavTextColorActiveCalendar
-            R.id.action_work -> bn.itemTextAppearanceActive = R.style.NavTextColorActiveWork
-            R.id.action_goals -> bn.itemTextAppearanceActive = R.style.NavTextColorActiveGoals
+            R.id.action_home -> bn.itemTextAppearanceActive = R.style.NavTextColorActivePlanner
+            R.id.action_weather -> bn.itemTextAppearanceActive = R.style.NavTextColorActiveCalendar
+            R.id.action_notifications -> bn.itemTextAppearanceActive = R.style.NavTextColorActiveWork
+            R.id.action_planets -> bn.itemTextAppearanceActive = R.style.NavTextColorActiveGoals
         }
         // this resets the  other icons to black, hacky but only way
         bn.itemIconTintList = null
@@ -214,7 +213,7 @@ abstract class BaseActivity : AppCompatActivity(), BottomNavigationView.OnNaviga
             this,
             drawerLayout,
             toolbar,
-            R.string.common_open_on_phone,
+            R.string.open_on_phone,
             R.string.abc_action_bar_home_description
         )
         groupAdapter.apply {
@@ -225,31 +224,31 @@ abstract class BaseActivity : AppCompatActivity(), BottomNavigationView.OnNaviga
             withNewSection {
                 add(
                     NavItem(
-                        label = R.string.nav_planner,
-                        newIntent = PlannerActivity.Companion::newIntent,
-                        iconResource = R.drawable.ic_planner_black_two
+                        label = R.string.nav_home,
+                        newIntent = HomeActivity.Companion::newIntent,
+                        iconResource = R.drawable.ic_404
                     )
                 )
                 add(
                     NavItem(
-                        label = R.string.nav_network,
-                        newIntent = NetworkActivity.Companion::newIntent,
-                        iconResource = R.drawable.ic_network_black
+                        label = R.string.nav_weather,
+                        newIntent = WeatherActivity.Companion::newIntent,
+                        iconResource = R.drawable.ic_404
                     )
                 )
                 //<div>Icons made by <a href="https://www.flaticon.com/authors/surang" title="surang">surang</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
                 add(
                     NavItem(
-                        label = R.string.nav_goals,
-                        newIntent = GoalsListActivity.Companion::newIntent,
-                        iconResource = R.drawable.ic_goals_black
+                        label = R.string.nav_planets,
+                        newIntent = PlanetsActivity.Companion::newIntent,
+                        iconResource = R.drawable.ic_404
                     )
                 )
                 add(
                     NavItem(
-                        label = R.string.nav_work,
-                        newIntent = WorkActivity.Companion::newIntent,
-                        iconResource = R.drawable.ic_work_black
+                        label = R.string.nav_notifications,
+                        newIntent = NotificationActivity.Companion::newIntent,
+                        iconResource = R.drawable.ic_404
                     )
                 )
             }
@@ -259,19 +258,6 @@ abstract class BaseActivity : AppCompatActivity(), BottomNavigationView.OnNaviga
                         label = R.string.nav_profile,
                         newIntent = ProfileActivity.Companion::newIntent,
                         divider = true
-                    )
-                )
-                add(
-                    NavItem(
-                        label = R.string.nav_grant_website,
-                        newIntent = PlannerActivity.Companion::launchNewsLink
-                    )
-                )
-                add(
-                    NavItem(
-                        label = R.string.settings,
-                        newIntent = SettingsActivity.Companion::newIntent,
-                        iconResource = R.drawable.ic_settings
                     )
                 )
             }
@@ -299,19 +285,11 @@ abstract class BaseActivity : AppCompatActivity(), BottomNavigationView.OnNaviga
             .show()
     }
 
-    fun showApiError(result: String) {
-        val rootView = this.window.decorView.findViewById<View>(android.R.id.content)
-        Snackbar.make(rootView, result, Snackbar.LENGTH_LONG).show()
-
-        GCServiceLocator.resolve(CrashlyticsLogger::class.java).logException(Exception(result))
-    }
-
-
     private fun showSignoutDialog(item: SignOutItem) {
         AlertDialog.Builder(this).apply {
             setMessage(getString(R.string.signout_confirm))
-            setNegativeButton(R.string.cancel, null)
-            setPositiveButton(R.string.nav_logout, { dialog, id -> signout(item) })
+            setNegativeButton(R.string.nav_cancel, null)
+            setPositiveButton(R.string.nav_logout) { dialog, id -> signout(item) }
             show()
         }
     }
@@ -336,10 +314,10 @@ abstract class BaseActivity : AppCompatActivity(), BottomNavigationView.OnNaviga
             showSignoutDialog(item)
         } else if (item is NavItem) {
             view.context.startActivity(item.newIntent(this))
-            Bungee.slideRight(this)
+
         } else if (item is ProfileNavItem) {
             view.context.startActivity(item.newIntent(this, selectedItem))
-            Bungee.slideRight(this)
+
         } else if (item is LambaNavItem) {
             item.lambda()
         }
@@ -347,24 +325,6 @@ abstract class BaseActivity : AppCompatActivity(), BottomNavigationView.OnNaviga
 
     private fun appVersion(): String {
         return packageManager.getPackageInfo(packageName, 0).versionName
-    }
-
-    private fun doBounceAnimation(targetView: View) {
-        targetView.visibility = View.VISIBLE
-        val animPos = dpToPx(21).toFloat()
-        val animationMs: Long = 800
-        val propertyPositionForward = PropertyValuesHolder.ofFloat(View.TRANSLATION_X, animPos)
-        val propertyAlphaForward = PropertyValuesHolder.ofFloat(View.ALPHA, 0f, 1f)
-
-        val forward = ObjectAnimator.ofPropertyValuesHolder(targetView, propertyPositionForward, propertyAlphaForward)
-        forward.interpolator = EasingInterpolator(Ease.ELASTIC_IN_OUT)
-        forward.duration = animationMs
-        forward.start()
-        forward.addListener(object : AnimatorListenerAdapter() {
-            override fun onAnimationEnd(animation: Animator?) {
-                animation?.removeListener(this)
-            }
-        })
     }
 
     override fun onDrawerStateChanged(newState: Int) {

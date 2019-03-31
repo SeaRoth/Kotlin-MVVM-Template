@@ -1,0 +1,29 @@
+<resources>
+    <!-- DP -->
+    <dimen name="one_dp">1dp</dimen>
+    <dimen name="six_dp">6dp</dimen>
+    <dimen name="fifteen_dp">15dp</dimen>
+    <dimen name="twenty_dp">20dp</dimen>
+    <dimen name="twenty_two_dp">22dp</dimen>
+    <dimen name="fifty_dp">52dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="scanner_content">240dp</dimen>
+    <dimen name="product_thumb_width">95dp</dimen>
+    <dimen name="product_thumb_height">96dp</dimen>
+    <dimen name="product_layout">172dp</dimen>
+    <dimen name="nav_drawer_row_height">48dp</dimen>
+    <dimen name="thick_line">3dp</dimen>
+    <dimen name="small_line">1dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="cart_hint_padding">56dp</dimen>
+    <dimen name="list_detail_hint_padding">124dp</dimen>
+    <dimen name="widget_background_corner_radius">10dp</dimen>
+
+    <!-- SP -->
+    <dimen name="body_text_size">14sp</dimen>
+    <dimen name="caps_body_size">12sp</dimen>
+    <dimen name="small_medium_size">18sp</dimen>
+    <dimen name="medium_size">24sp</dimen>
+    <dimen name="large_size">28sp</dimen>
+
+</resources>

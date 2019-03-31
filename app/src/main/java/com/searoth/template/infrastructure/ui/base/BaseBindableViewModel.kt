@@ -1,4 +1,4 @@
-package com.searoth.planner.infrastructure.ui.base
+package com.searoth.template.infrastructure.ui.base
 
 import androidx.databinding.ViewDataBinding
 import com.xwray.groupie.Group

@@ -1,13 +1,12 @@
-package com.searoth.planner.infrastructure.ui.base
+package com.searoth.template.infrastructure.ui.base
 
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.searoth.planner.R
-import com.searoth.planner.databinding.NavTextItemBinding
-import com.searoth.planner.infrastructure.common.utils.dpToPx
+import com.searoth.template.R
+import com.searoth.template.databinding.NavTextItemBinding
+import com.searoth.template.infrastructure.common.utils.dpToPx
 import com.xwray.groupie.databinding.BindableItem
-
 
 class NavTextItem(val label: String) : BindableItem<NavTextItemBinding>() {
     override fun getLayout(): Int {

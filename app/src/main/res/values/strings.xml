@@ -1,24 +1,17 @@
 <resources>
     <string name="app_name">Kotlin MVVM Template</string>
 
+    <string name="nav_home">Home</string>
+    <string name="nav_weather">Weather</string>
+    <string name="nav_planets">Planets</string>
+    <string name="nav_notifications">Notifications</string>
+    <string name="nav_profile">Profile</string>
 
+    <string name="signout_confirm">Are you sure you want to sign out?</string>
+    <string name="nav_logout">Logout</string>
+    <string name="nav_cancel">Cancel</string>
 
-
-
-
-    <string name="nav_first">Home</string>
-    <string name="nav_second">Second</string>
-    <string name="nav_third">Third</string>
-    <string name="nav_fourth">Fourth</string>
-
-
-
-
-
-
-
-
-
+    <string name="open_on_phone">Open on Phone</string>
 
 
 

@@ -19,6 +19,43 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+
+
+        <activity android:name=".infrastructure.ui.home.HomeActivity"
+                  android:screenOrientation="sensorPortrait"
+                  android:theme="@style/NoAnimTheme"/>
+
+        <activity android:name=".infrastructure.ui.planets.PlanetsActivity"
+                  android:screenOrientation="sensorPortrait"
+                  android:theme="@style/NoAnimTheme"/>
+
+        <activity android:name=".infrastructure.ui.weather.WeatherActivity"
+                  android:screenOrientation="sensorPortrait"
+                  android:theme="@style/NoAnimTheme"/>
+
+        <activity android:name=".infrastructure.ui.notification.NotificationActivity"
+                  android:screenOrientation="sensorPortrait"
+                  android:theme="@style/NoAnimTheme"/>
+
+        <activity android:name=".infrastructure.ui.features.profile.ProfileActivity"
+                  android:screenOrientation="sensorPortrait"
+                  android:theme="@style/NoAnimTheme"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </application>
 
 </manifest>

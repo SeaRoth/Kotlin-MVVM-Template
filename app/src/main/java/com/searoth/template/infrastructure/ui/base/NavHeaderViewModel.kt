@@ -1,22 +1,22 @@
-package com.searoth.planner.infrastructure.ui.base
+package com.searoth.template.infrastructure.ui.base
 
 import android.app.Application
 import android.os.Handler
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
-import com.searoth.planner.R
-import com.searoth.planner.domain.models.NavHeaderTopItem
-import com.searoth.planner.infrastructure.common.helpers.LiveDataAction
-import com.searoth.planner.infrastructure.common.helpers.LiveDataActionWithData
-import com.searoth.planner.infrastructure.common.helpers.getDrawablePath
-import com.searoth.planner.infrastructure.common.utils.getString
+import com.searoth.template.R
+import com.searoth.template.domain.models.NavHeaderTopItem
+import com.searoth.template.infrastructure.common.helpers.LiveDataAction
+import com.searoth.template.infrastructure.common.helpers.LiveDataActionWithData
+import com.searoth.template.infrastructure.common.helpers.getDrawablePath
+import com.searoth.template.infrastructure.common.utils.getString
 
 class NavHeaderViewModel(app: Application) : AndroidViewModel(app) {
 
     // Observables
     val text        = ObservableField<String>("10X or go home")
-    val imageUrl    = ObservableField<String>(R.drawable.growth_con.getDrawablePath())
+    val imageUrl    = ObservableField<String>(R.drawable.ic_404.getDrawablePath())
     val link        = ObservableField<String>()
     val drawerOpen  = ObservableBoolean(false)
 
@@ -29,26 +29,10 @@ class NavHeaderViewModel(app: Application) : AndroidViewModel(app) {
     var handler = Handler()
     val navHeaderTopItems= mutableListOf<NavHeaderTopItem>()
     val navHeaderTopItemsFresh = mutableListOf<NavHeaderTopItem>(
-        NavHeaderTopItem(text = "The G&E Show", imgUrl = R.drawable.ge_show.getDrawablePath(),
-            link = getString(R.string.link_playlist_ge_show)),
-        NavHeaderTopItem(text = "The Cardone Zone", imgUrl = R.drawable.cardone_zone.getDrawablePath(),
-            link = getString(R.string.link_playlist_cardone_zone)),
-        NavHeaderTopItem(text = "Young Hustlers", imgUrl = R.drawable.young_hustlers.getDrawablePath(),
-            link = getString(R.string.link_playlist_young_hustlers)),
-        NavHeaderTopItem(text = "Real Estate Investing Made Simple", imgUrl = R.drawable.real_estate_investing.getDrawablePath(),
-            link = getString(R.string.link_playlist_real_estate)),
-        NavHeaderTopItem(text = "Power Players", imgUrl = R.drawable.power_players.getDrawablePath(),
-            link = getString(R.string.link_playlist_power_players)),
-        NavHeaderTopItem(text = "How to invest millions in real estate", imgUrl = R.drawable.buying_big.getDrawablePath(),
-            link = getString(R.string.link_playlist_invest_millions)),
-        NavHeaderTopItem(text = "Best of Grant Cardone", imgUrl = R.drawable.how_to_change.getDrawablePath(),
-            link = getString(R.string.link_playlist_best_of)),
-        NavHeaderTopItem(text = "10x Business Boot Camp", imgUrl = R.drawable.boot_camp.getDrawablePath(),
-            link = getString(R.string.link_playlist_boot_camp)),
-        NavHeaderTopItem(text = "10X Growth Con", imgUrl = R.drawable.growth_con.getDrawablePath(),
-            link = getString(R.string.link_playlist_growth_con)),
-        NavHeaderTopItem(text = "10X Growth Con", imgUrl = R.drawable.growth_con_3.getDrawablePath(),
-            link = getString(R.string.link_playlist_growth_con))
+        NavHeaderTopItem(text = "The G&E Show", imgUrl = R.drawable.ic_404.getDrawablePath(),
+            link = getString(R.string.nav_planets)),
+        NavHeaderTopItem(text = "The Cardone Zone", imgUrl = R.drawable.ic_404.getDrawablePath(),
+            link = getString(R.string.nav_home))
     )
 
     private val runnableCode = object : Runnable {

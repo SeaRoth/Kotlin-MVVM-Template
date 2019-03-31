@@ -1,9 +1,8 @@
-package com.searoth.planner.infrastructure.ui.base
+package com.searoth.template.infrastructure.ui.base
 
 import androidx.databinding.ViewDataBinding
-import com.searoth.planner.R
-import com.searoth.planner.databinding.HeaderNavBinding
-import com.searoth.planner.infrastructure.ui.base.NavHeaderViewModel
+import com.searoth.template.R
+import com.searoth.template.databinding.HeaderNavBinding
 import com.xwray.groupie.databinding.BindableItem
 
 class NavHeader(private val navHeaderViewModel: NavHeaderViewModel) : BindableItem<ViewDataBinding>() {
