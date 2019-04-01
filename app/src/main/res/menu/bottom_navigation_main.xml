@@ -4,25 +4,25 @@
     <item
             android:id="@+id/action_home"
             android:enabled="true"
-            android:icon="@drawable/ic_404"
+            android:icon="@drawable/ic_network"
             android:title="@string/nav_home"
             app:showAsAction="ifRoom"/>
     <item
             android:id="@+id/action_weather"
             android:enabled="true"
-            android:icon="@drawable/ic_404"
+            android:icon="@drawable/ic_network"
             android:title="@string/nav_weather"
             app:showAsAction="ifRoom"/>
     <item
             android:id="@+id/action_planets"
             android:enabled="true"
-            android:icon="@drawable/ic_404"
+            android:icon="@drawable/ic_network"
             android:title="@string/nav_planets"
             app:showAsAction="ifRoom"/>
     <item
             android:id="@+id/action_notifications"
             android:enabled="true"
-            android:icon="@drawable/ic_404"
+            android:icon="@drawable/ic_network"
             android:title="@string/nav_notifications"
             app:showAsAction="ifRoom"/>
 </menu>

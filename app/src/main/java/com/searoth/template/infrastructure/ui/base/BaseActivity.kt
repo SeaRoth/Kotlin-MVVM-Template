@@ -109,17 +109,17 @@ abstract class BaseActivity : AppCompatActivity(), BottomNavigationView.OnNaviga
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        navHeaderViewModel.actionOpenYoutubeIntent.observe(this) {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(it)))
-        }
-
-        navHeaderViewModel.actionAnimate.observe(this) {
-            ViewAnimator
-                .animate(iv_nav_header, tv_nav_title)
-                .dp().translationX(-200f, 0f)
-                .duration(500)
-                .start()
-        }
+//        navHeaderViewModel.actionOpenYoutubeIntent.observe(this) {
+//            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(it)))
+//        }
+//
+//        navHeaderViewModel.actionAnimate.observe(this) {
+//            ViewAnimator
+//                .animate(iv_nav_header, tv_nav_title)
+//                .dp().translationX(-200f, 0f)
+//                .duration(500)
+//                .start()
+//        }
     }
 
     private var selectedItem = R.id.action_home
@@ -254,7 +254,7 @@ abstract class BaseActivity : AppCompatActivity(), BottomNavigationView.OnNaviga
             }
             withNewSection {
                 add(
-                    ProfileNavItem(
+                    NavItem(
                         label = R.string.nav_profile,
                         newIntent = ProfileActivity.Companion::newIntent,
                         divider = true
