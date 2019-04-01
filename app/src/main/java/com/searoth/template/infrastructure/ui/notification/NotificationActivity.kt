@@ -12,6 +12,7 @@ import com.searoth.template.databinding.ActivityNotificationBinding
 import com.searoth.template.infrastructure.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_notification.*
 import kotlinx.android.synthetic.main.bottom_nav.*
+import kotlinx.android.synthetic.main.include_navigation_drawer.*
 import timber.log.Timber
 
 class NotificationActivity : BaseActivity() {
@@ -26,6 +27,7 @@ class NotificationActivity : BaseActivity() {
             setupBottomNav(bottomNavigationInc.bottomNavigation, R.id.action_notifications, R.color.blanched_almond)
             activityViewModel = notificationActivityViewModel
         }
+        setupNavDrawer(nav_recycler_view, toolbar, drawer_layout)
         setSupportActionBar(toolbar)
         setupHomeAsUp(ActionBarStyle.NAV_BUTTON, statusColor = R.color.tenx_red)
         supportActionBar?.setTitle("")

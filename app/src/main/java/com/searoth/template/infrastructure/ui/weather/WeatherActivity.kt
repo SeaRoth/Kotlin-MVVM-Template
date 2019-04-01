@@ -12,6 +12,7 @@ import com.searoth.template.databinding.ActivityWeatherBinding
 import com.searoth.template.infrastructure.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_weather.*
 import kotlinx.android.synthetic.main.bottom_nav.*
+import kotlinx.android.synthetic.main.include_navigation_drawer.*
 import timber.log.Timber
 
 class WeatherActivity : BaseActivity() {
@@ -26,6 +27,7 @@ class WeatherActivity : BaseActivity() {
             setupBottomNav(bottomNavigationInc.bottomNavigation, R.id.action_weather, R.color.blanched_almond)
             activityViewModel = weatherActivityViewModel
         }
+        setupNavDrawer(nav_recycler_view, toolbar, drawer_layout)
         setSupportActionBar(toolbar)
         setupHomeAsUp(ActionBarStyle.NAV_BUTTON, statusColor = R.color.tenx_red)
         supportActionBar?.setTitle("")

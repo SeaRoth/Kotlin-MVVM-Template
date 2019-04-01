@@ -39,11 +39,9 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.OnItemClickListener
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.header_nav.*
-
 import timber.log.Timber
 
-abstract class BaseActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener,
-    DrawerLayout.DrawerListener {
+abstract class BaseActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener {
 
     lateinit var drawerToggle: ActionBarDrawerToggle
 
@@ -109,17 +107,17 @@ abstract class BaseActivity : AppCompatActivity(), BottomNavigationView.OnNaviga
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-//        navHeaderViewModel.actionOpenYoutubeIntent.observe(this) {
-//            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(it)))
-//        }
-//
-//        navHeaderViewModel.actionAnimate.observe(this) {
-//            ViewAnimator
-//                .animate(iv_nav_header, tv_nav_title)
-//                .dp().translationX(-200f, 0f)
-//                .duration(500)
-//                .start()
-//        }
+        navHeaderViewModel.actionOpenYoutubeIntent.observe(this) {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(it)))
+        }
+
+        navHeaderViewModel.actionAnimate.observe(this) {
+            ViewAnimator
+                .animate(iv_nav_header, tv_nav_title)
+                .dp().translationX(-200f, 0f)
+                .duration(500)
+                .start()
+        }
     }
 
     private var selectedItem = R.id.action_home
@@ -310,16 +308,11 @@ abstract class BaseActivity : AppCompatActivity(), BottomNavigationView.OnNaviga
     }
 
     private val onItemClickListener = OnItemClickListener { item, view ->
-        if (item is SignOutItem) {
-            showSignoutDialog(item)
-        } else if (item is NavItem) {
-            view.context.startActivity(item.newIntent(this))
-
-        } else if (item is ProfileNavItem) {
-            view.context.startActivity(item.newIntent(this, selectedItem))
-
-        } else if (item is LambaNavItem) {
-            item.lambda()
+        when (item) {
+            is SignOutItem -> showSignoutDialog(item)
+            is NavItem -> view.context.startActivity(item.newIntent(this))
+            is ProfileNavItem -> view.context.startActivity(item.newIntent(this, selectedItem))
+            is LambaNavItem -> item.lambda()
         }
     }
 

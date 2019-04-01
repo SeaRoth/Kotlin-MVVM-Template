@@ -12,6 +12,7 @@ import com.searoth.template.databinding.ActivityPlanetsBinding
 import com.searoth.template.infrastructure.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_planets.*
 import kotlinx.android.synthetic.main.bottom_nav.*
+import kotlinx.android.synthetic.main.include_navigation_drawer.*
 import timber.log.Timber
 
 class PlanetsActivity : BaseActivity() {
@@ -26,6 +27,7 @@ class PlanetsActivity : BaseActivity() {
             setupBottomNav(bottomNavigationInc.bottomNavigation, R.id.action_planets, R.color.blanched_almond)
             activityViewModel = planetsActivityViewModel
         }
+        setupNavDrawer(nav_recycler_view, toolbar, drawer_layout)
         setSupportActionBar(toolbar)
         setupHomeAsUp(ActionBarStyle.NAV_BUTTON, statusColor = R.color.tenx_red)
         supportActionBar?.setTitle("")
