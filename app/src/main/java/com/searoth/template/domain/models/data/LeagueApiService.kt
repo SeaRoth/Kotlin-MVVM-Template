@@ -1,6 +1,6 @@
 package com.searoth.template.domain.models.data
 
-import com.searoth.template.domain.models.league.Match
+import com.searoth.template.domain.models.league.MatchSynopsis
 import com.searoth.template.domain.models.league.Summoner
 import io.reactivex.Observable
 import retrofit2.http.*
@@ -15,6 +15,6 @@ interface LeagueApiService {
     fun getSummoner(@Url url: String): Observable<Summoner>
 
     @GET
-    fun getMatchList(@Url url:String) :Observable<List<Match>>
+    fun getMatchList(@Url url:String) :Observable<List<MatchSynopsis>>
 
 }

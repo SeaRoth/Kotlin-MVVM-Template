@@ -4,10 +4,10 @@ import android.app.Application
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
-import com.searoth.template.domain.models.league.Match
+import com.searoth.template.domain.models.league.MatchSynopsis
 import com.searoth.template.domain.models.league.Summoner
 import com.searoth.template.infrastructure.di.SeaRothServiceLocator
-import com.searoth.template.infrastructure.network.repository.MatchRepository
+import com.searoth.template.infrastructure.network.repository.MatchSynopsisSynopsisRepository
 import com.searoth.template.infrastructure.network.repository.SummonerRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -19,10 +19,10 @@ import java.util.concurrent.TimeUnit
 class HomeActivityViewModel(app: Application) : AndroidViewModel(app) {
     //repo
     private val summonerRepository = SeaRothServiceLocator.resolve(SummonerRepository::class.java)
-    private val matchRepository = SeaRothServiceLocator.resolve(MatchRepository::class.java)
+    private val matchRepository = SeaRothServiceLocator.resolve(MatchSynopsisSynopsisRepository::class.java)
     // disposables
     lateinit var disposableSummoner: DisposableObserver<Summoner>
-    lateinit var disposableMatchList: DisposableObserver<List<Match>>
+    lateinit var disposableMatchSynopsisList: DisposableObserver<List<MatchSynopsis>>
     private val disposables = CompositeDisposable()
     //coroutines
 
@@ -35,7 +35,7 @@ class HomeActivityViewModel(app: Application) : AndroidViewModel(app) {
 
     //data
     private lateinit var summoner: Summoner
-    private lateinit var matches: List<Match>
+    private lateinit var matchSynopses: List<MatchSynopsis>
 
     override fun onCleared() {
         super.onCleared()
@@ -72,11 +72,11 @@ class HomeActivityViewModel(app: Application) : AndroidViewModel(app) {
 
     fun searchMatchList() {
         showLoadingIndicator.set(true)
-        disposableMatchList = object : DisposableObserver<List<Match>>() {
+        disposableMatchSynopsisList = object : DisposableObserver<List<MatchSynopsis>>() {
             override fun onComplete() {}
 
-            override fun onNext(t: List<Match>) {
-                matches = t
+            override fun onNext(t: List<MatchSynopsis>) {
+                matchSynopses = t
             }
 
             override fun onError(e: Throwable) {
@@ -88,7 +88,7 @@ class HomeActivityViewModel(app: Application) : AndroidViewModel(app) {
             .subscribeOn(Schedulers.newThread())
             .observeOn(AndroidSchedulers.mainThread())
             .debounce(400, TimeUnit.MILLISECONDS)
-            .subscribe(disposableMatchList)
+            .subscribe(disposableMatchSynopsisList)
     }
 
     fun setSummoner(){
