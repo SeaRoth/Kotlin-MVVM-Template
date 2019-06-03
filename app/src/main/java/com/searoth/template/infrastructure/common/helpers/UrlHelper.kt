@@ -12,5 +12,10 @@ class UrlHelper {
         fun buildMatchList(accountId: String) : String {
             return "matchlists/by-account/$accountId?api_key=$API_KEY"
         }
+
+        //https://na1.api.riotgames.com/lol/match/v4/matches/3055960811?api_key=RGAPI-bda13375-20f1-4350-b9b8-9784f1ca58f0
+        fun buildMatch(accountId: String) : String {
+            return "match/v4/matches/$accountId?api_key=$API_KEY"
+        }
     }
 }

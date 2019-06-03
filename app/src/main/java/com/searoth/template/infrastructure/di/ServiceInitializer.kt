@@ -6,6 +6,8 @@ import androidx.room.Room
 import com.searoth.template.domain.models.data.LeagueApiService
 
 import com.searoth.template.domain.models.data.NewsApiService
+import com.searoth.template.infrastructure.network.repository.MatchRepository
+import com.searoth.template.infrastructure.network.repository.MatchSynopsisSynopsisRepository
 import com.searoth.template.infrastructure.network.repository.SummonerRepository
 import com.searoth.template.infrastructure.network.repository.local.TemplateDatabase
 import com.squareup.picasso.Picasso
@@ -59,6 +61,9 @@ class ServiceInitializer {
         private fun initRepositories(application: Context) {
             val database = TemplateDatabase.getInstance(application)
             SeaRothServiceLocator.put(SummonerRepository::class.java, SummonerRepository.getInstance(database.summonerDao()))
+            SeaRothServiceLocator.put(MatchSynopsisSynopsisRepository::class.java, MatchSynopsisSynopsisRepository.getInstance(database.matchSynopsisDao()))
+            SeaRothServiceLocator.put(MatchRepository::class.java, MatchRepository.getInstance(database.matchDao()))
+
         }
     }
 }

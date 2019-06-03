@@ -1,4 +1,4 @@
-package com.searoth.template.infrastructure.network.repository
+package com.searoth.template.infrastructure.network
 
 import com.searoth.template.domain.models.league.MatchSynopsis
 import io.reactivex.Observable

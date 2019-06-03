@@ -5,7 +5,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "match")
+@Entity(tableName = "match_single")
 data class Match @JvmOverloads constructor(
 
     @NonNull @PrimaryKey val gameId: Long,
