@@ -46,7 +46,7 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".infrastructure.ui.planets.PlanetsActivity"
+                android:name=".infrastructure.ui.articles.ArticlesActivity"
                 android:screenOrientation="sensorPortrait"
                 android:theme="@style/HomeActivityTheme"/>
         <activity
@@ -54,7 +54,7 @@
                 android:screenOrientation="sensorPortrait"
                 android:theme="@style/HomeActivityTheme"/>
         <activity
-                android:name=".infrastructure.ui.notification.NotificationActivity"
+                android:name=".infrastructure.ui.youtube.YoutubeActivity"
                 android:screenOrientation="sensorPortrait"
                 android:theme="@style/HomeActivityTheme"/>
         <activity

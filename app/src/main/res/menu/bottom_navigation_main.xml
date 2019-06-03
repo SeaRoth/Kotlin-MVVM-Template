@@ -11,18 +11,18 @@
             android:id="@+id/action_weather"
             android:enabled="true"
             android:icon="@drawable/ic_network"
-            android:title="@string/nav_weather"
+            android:title="@string/nav_maps"
             app:showAsAction="ifRoom"/>
     <item
             android:id="@+id/action_planets"
             android:enabled="true"
             android:icon="@drawable/ic_network"
-            android:title="@string/nav_planets"
+            android:title="@string/nav_news"
             app:showAsAction="ifRoom"/>
     <item
             android:id="@+id/action_notifications"
             android:enabled="true"
             android:icon="@drawable/ic_network"
-            android:title="@string/nav_notifications"
+            android:title="@string/nav_youtube"
             app:showAsAction="ifRoom"/>
 </menu>

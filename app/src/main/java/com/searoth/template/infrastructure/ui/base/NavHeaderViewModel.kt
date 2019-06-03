@@ -6,7 +6,7 @@ import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
 import com.searoth.template.R
-import com.searoth.template.domain.models.NavHeaderTopItem
+import com.searoth.template.domain.models.news.NavHeaderTopItem
 import com.searoth.template.infrastructure.common.helpers.LiveDataAction
 import com.searoth.template.infrastructure.common.helpers.LiveDataActionWithData
 import com.searoth.template.infrastructure.common.helpers.getDrawablePath
@@ -29,10 +29,14 @@ class NavHeaderViewModel(app: Application) : AndroidViewModel(app) {
     var handler = Handler()
     val navHeaderTopItems= mutableListOf<NavHeaderTopItem>()
     val navHeaderTopItemsFresh = mutableListOf<NavHeaderTopItem>(
-        NavHeaderTopItem(text = "The G&E Show", imgUrl = R.drawable.ic_404.getDrawablePath(),
-            link = getString(R.string.nav_planets)),
-        NavHeaderTopItem(text = "The Cardone Zone", imgUrl = R.drawable.ic_404.getDrawablePath(),
-            link = getString(R.string.nav_home))
+        NavHeaderTopItem(
+            text = "The G&E Show", imgUrl = R.drawable.ic_404.getDrawablePath(),
+            link = getString(R.string.nav_news)
+        ),
+        NavHeaderTopItem(
+            text = "The Cardone Zone", imgUrl = R.drawable.ic_404.getDrawablePath(),
+            link = getString(R.string.nav_home)
+        )
     )
 
     private val runnableCode = object : Runnable {

@@ -32,8 +32,8 @@ import com.searoth.template.ext.withNewSection
 import com.searoth.template.infrastructure.common.utils.dpToPx
 import com.searoth.template.infrastructure.ui.features.profile.ProfileActivity
 import com.searoth.template.infrastructure.ui.home.HomeActivity
-import com.searoth.template.infrastructure.ui.notification.NotificationActivity
-import com.searoth.template.infrastructure.ui.planets.PlanetsActivity
+import com.searoth.template.infrastructure.ui.youtube.YoutubeActivity
+import com.searoth.template.infrastructure.ui.articles.ArticlesActivity
 import com.searoth.template.infrastructure.ui.weather.WeatherActivity
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.OnItemClickListener
@@ -89,10 +89,10 @@ abstract class BaseActivity : AppCompatActivity(), BottomNavigationView.OnNaviga
                 startActivity(createNavIntent<WeatherActivity>())
             }
             R.id.action_planets -> {
-                startActivity(createNavIntent<PlanetsActivity>())
+                startActivity(createNavIntent<ArticlesActivity>())
             }
             R.id.action_notifications -> {
-                startActivity(createNavIntent<NotificationActivity>())
+                startActivity(createNavIntent<YoutubeActivity>())
             }
         }
         return false
@@ -229,7 +229,7 @@ abstract class BaseActivity : AppCompatActivity(), BottomNavigationView.OnNaviga
                 )
                 add(
                     NavItem(
-                        label = R.string.nav_weather,
+                        label = R.string.nav_maps,
                         newIntent = WeatherActivity.Companion::newIntent,
                         iconResource = R.drawable.ic_404
                     )
@@ -237,15 +237,15 @@ abstract class BaseActivity : AppCompatActivity(), BottomNavigationView.OnNaviga
                 //<div>Icons made by <a href="https://www.flaticon.com/authors/surang" title="surang">surang</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
                 add(
                     NavItem(
-                        label = R.string.nav_planets,
-                        newIntent = PlanetsActivity.Companion::newIntent,
+                        label = R.string.nav_news,
+                        newIntent = ArticlesActivity.Companion::newIntent,
                         iconResource = R.drawable.ic_404
                     )
                 )
                 add(
                     NavItem(
-                        label = R.string.nav_notifications,
-                        newIntent = NotificationActivity.Companion::newIntent,
+                        label = R.string.nav_youtube,
+                        newIntent = YoutubeActivity.Companion::newIntent,
                         iconResource = R.drawable.ic_404
                     )
                 )

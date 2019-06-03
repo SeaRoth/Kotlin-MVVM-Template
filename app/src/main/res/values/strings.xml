@@ -2,9 +2,9 @@
     <string name="app_name">Kotlin MVVM Template</string>
 
     <string name="nav_home">Home</string>
-    <string name="nav_weather">Weather</string>
-    <string name="nav_planets">Planets</string>
-    <string name="nav_notifications">Notifications</string>
+    <string name="nav_maps">Maps</string>
+    <string name="nav_news">News</string>
+    <string name="nav_youtube">YouTube</string>
     <string name="nav_profile">Profile</string>
 
     <string name="signout_confirm">Are you sure you want to sign out?</string>
@@ -13,6 +13,10 @@
 
     <string name="open_on_phone">Open on Phone</string>
     <string name="title_activity_maps">Map</string>
+
+
+    <string name="summoner_by_name">summoner/v4/summoners/by-name/%s?api_key=%s</string>
+
 
 
 </resources>

@@ -51,7 +51,6 @@ fun loadImageFilePath(imageView: ImageView, url: String?, placeholder: Drawable)
             .error(R.drawable.ic_404)
             .into(imageView)
     }
-
 }
 
 @BindingAdapter(value = ["app:imageUrlTwo"], requireAll = false)

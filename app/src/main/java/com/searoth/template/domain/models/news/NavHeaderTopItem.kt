@@ -1,4 +1,4 @@
-package com.searoth.template.domain.models
+package com.searoth.template.domain.models.news
 
 data class NavHeaderTopItem(
     var text: String? = "",

@@ -1,6 +1,6 @@
 package com.searoth.template.domain.models.data
 
-import com.searoth.template.domain.models.BBCTopHeadline
+import com.searoth.template.domain.models.news.BBCTopHeadline
 import retrofit2.http.GET
 import retrofit2.http.Query
 import io.reactivex.Observable

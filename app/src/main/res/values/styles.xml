@@ -18,6 +18,18 @@
         <item name="android:actionMenuTextColor">@color/white</item>
     </style>
 
+    <style name="AppTheme.WhiteRipple">
+        <item name="colorControlHighlight">@color/white</item>
+    </style>
+
+    <style name="FlatDeleteListButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="colorControlHighlight">@color/colorAccent</item>
+        <item name="android:textColor">@color/aquamarine</item>
+        <item name="android:theme">@style/AppTheme.WhiteRipple</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/open_sans_semi_bold</item>
+    </style>
+
     <style name="Caption1DarkGray">
         <item name="android:textSize">12sp</item>
         <item name="android:lineSpacingExtra">8sp</item>
