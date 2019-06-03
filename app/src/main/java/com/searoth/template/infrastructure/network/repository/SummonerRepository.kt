@@ -1,6 +1,5 @@
 package com.searoth.template.infrastructure.network.repository
 
-import android.content.Context
 import com.searoth.template.domain.models.data.LeagueApiService
 import com.searoth.template.domain.models.league.Summoner
 import com.searoth.template.infrastructure.common.helpers.UrlHelper
