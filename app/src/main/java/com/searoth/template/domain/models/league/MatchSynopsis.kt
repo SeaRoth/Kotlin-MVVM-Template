@@ -10,7 +10,7 @@ data class MatchSynopsis @JvmOverloads constructor(
 
     @NonNull @PrimaryKey val gameId: Long,
 
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "champion")
     val champion: Int,
 
     @ColumnInfo(name = "lane")

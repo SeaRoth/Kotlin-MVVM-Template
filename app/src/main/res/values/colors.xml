@@ -8,7 +8,7 @@
     <color name="tenx_red_darker">#4C0000</color>
     <color name="tenx_yellow">#f0d130</color>
     <color name="tenx_black">#3b3740</color>
-    <color name="tenx_black_darker">#221E27</color>
+    <color name="tenx_black_darker">#8356BB</color>
     <color name="tenx_black_darkest">#19161d</color>
 
     <color name="primary">@color/tenx_red</color>

@@ -5,6 +5,7 @@ import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
 import com.searoth.template.domain.models.league.Match
+import com.searoth.template.domain.models.league.MatchListResponse
 import com.searoth.template.domain.models.league.MatchSynopsis
 import com.searoth.template.domain.models.league.Summoner
 import com.searoth.template.infrastructure.di.SeaRothServiceLocator
@@ -25,7 +26,7 @@ class HomeActivityViewModel(app: Application) : AndroidViewModel(app) {
     private val matchRepository    = SeaRothServiceLocator.resolve(MatchRepository::class.java)
     // disposables
     lateinit var disposableSummoner: DisposableObserver<Summoner>
-    lateinit var disposableMatchSynopsisList: DisposableObserver<List<MatchSynopsis>>
+    lateinit var disposableMatchSynopsisList: DisposableObserver<MatchListResponse>
     lateinit var disposableMatches : DisposableObserver<Match>
     private val disposables = CompositeDisposable()
     //coroutines
@@ -36,6 +37,7 @@ class HomeActivityViewModel(app: Application) : AndroidViewModel(app) {
     val showLoadingIndicator    = ObservableBoolean(false)
     val showBottomNavigation     = ObservableBoolean(true)
     val summonerName = ObservableField<String>("imaqtpie")
+    val numberOfGames = ObservableField<String>()
 
     //data
     private lateinit var summoner: Summoner
@@ -56,6 +58,7 @@ class HomeActivityViewModel(app: Application) : AndroidViewModel(app) {
 
                 override fun onNext(t: Summoner) {
                     summoner = t
+                    searchMatchList()
                 }
 
                 override fun onError(e: Throwable) {
@@ -72,15 +75,16 @@ class HomeActivityViewModel(app: Application) : AndroidViewModel(app) {
 
     fun searchMatchList() {
         showLoadingIndicator.set(true)
-        disposableMatchSynopsisList = object : DisposableObserver<List<MatchSynopsis>>() {
+        disposableMatchSynopsisList = object : DisposableObserver<MatchListResponse>() {
             override fun onComplete() {}
 
-            override fun onNext(t: List<MatchSynopsis>) {
-                matchSynopses = t
+            override fun onNext(t: MatchListResponse) {
+                matchSynopses = t.matches
+                buildMatchListUI()
             }
 
             override fun onError(e: Throwable) {
-
+                Timber.e("error")
             }
 
         }
@@ -89,6 +93,14 @@ class HomeActivityViewModel(app: Application) : AndroidViewModel(app) {
             .observeOn(AndroidSchedulers.mainThread())
             .debounce(400, TimeUnit.MILLISECONDS)
             .subscribe(disposableMatchSynopsisList)
+    }
+
+    fun buildMatchListUI(){
+        numberOfGames.set("${matchSynopses.size} games")
+
+//        matchSynopses.forEach {
+//
+//        }
     }
 
     fun getMatchInformation(){

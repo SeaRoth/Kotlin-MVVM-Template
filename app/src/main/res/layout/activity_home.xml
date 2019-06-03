@@ -37,7 +37,6 @@
             </androidx.appcompat.widget.Toolbar>
 
 
-
             <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -85,13 +84,23 @@
                     android:onClick="@{v -> activityViewModel.searchSummoner()}"
                     android:id="@+id/button" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
                     android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/toolbar"/>
-            <Button
-                    android:text="Button"
+            <TextView
+                    android:text="Number of games"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="@{v -> activityViewModel.getMatchInformation()}"
-                    android:id="@+id/button2" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-                    android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/button"/>
+                    android:id="@+id/textView6" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="8dp" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/editText2"/>
+            <TextView
+                    android:text="@{activityViewModel.numberOfGames}"
+                    tools:text="290 games"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView7" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="8dp" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/textView6"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
         <include layout="@layout/include_navigation_drawer" />
     </androidx.drawerlayout.widget.DrawerLayout>

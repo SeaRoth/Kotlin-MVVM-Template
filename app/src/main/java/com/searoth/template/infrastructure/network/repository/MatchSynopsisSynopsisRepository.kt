@@ -1,6 +1,7 @@
 package com.searoth.template.infrastructure.network.repository
 
 import com.searoth.template.domain.models.data.LeagueApiService
+import com.searoth.template.domain.models.league.MatchListResponse
 import com.searoth.template.domain.models.league.MatchSynopsis
 import com.searoth.template.infrastructure.common.helpers.UrlHelper
 import com.searoth.template.infrastructure.di.SeaRothServiceLocator
@@ -8,13 +9,13 @@ import com.searoth.template.infrastructure.network.MatchSynopsisDataSource
 import com.searoth.template.infrastructure.network.repository.local.MatchSynopsisDao
 import io.reactivex.Observable
 
-class MatchSynopsisSynopsisRepository(val matchSynopsisDao: MatchSynopsisDao) :
-    MatchSynopsisDataSource {
+class MatchSynopsisSynopsisRepository(val matchSynopsisDao: MatchSynopsisDao) : MatchSynopsisDataSource {
 
     private var apiService : LeagueApiService = SeaRothServiceLocator.resolve(LeagueApiService::class.java)
 
     override fun getMatches(accountId: String): Observable<List<MatchSynopsis>> {
-        return Observable.concatArrayEager(getMatchesFromDb(accountId), getMatchesFromAPi(accountId))
+        return getMatchesFromDb(accountId)
+        //Observable.concatArrayEager(getMatchesFromDb(accountId), getMatchesFromAPi(accountId))
     }
 
     override fun getMatchesFromDb(accountId: String): Observable<List<MatchSynopsis>> {
@@ -24,9 +25,11 @@ class MatchSynopsisSynopsisRepository(val matchSynopsisDao: MatchSynopsisDao) :
             .doOnError {  }
     }
 
-    override fun getMatchesFromAPi(accountId: String): Observable<List<MatchSynopsis>> {
+    override fun getMatchesFromAPi(accountId: String): Observable<MatchListResponse> {
         return apiService.getMatchList(UrlHelper.buildMatchList(accountId))
-            .doOnNext { insertMatches(it) }
+            .doOnNext {
+                insertMatches(it.matches)
+            }
     }
 
     override fun insertMatches(list: List<MatchSynopsis>) {
