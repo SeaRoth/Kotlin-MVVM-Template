@@ -96,11 +96,29 @@ class HomeActivityViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     fun buildMatchListUI(){
+        val queueMap = mutableMapOf<Int, Int>()
+        val roleMap  = mutableMapOf<String, Int>()
+
         numberOfGames.set("${matchSynopses.size} games")
 
-//        matchSynopses.forEach {
-//
-//        }
+        matchSynopses.forEach {
+            //favorite queue
+            val q = it.queue
+            if(queueMap.containsKey(q)) {
+                val num = queueMap.getValue(q)
+                queueMap[q] = num + 1
+            }else
+                queueMap[q] = 1
+
+            //favorite role
+            val r = it.role
+            if(roleMap.containsKey(r)){
+                val num = roleMap.getValue(r)
+                roleMap[r] = num + 1
+            }else
+                roleMap[r] = 1
+        }
+        Timber.d("sdf")
     }
 
     fun getMatchInformation(){

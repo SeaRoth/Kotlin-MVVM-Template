@@ -27,8 +27,11 @@ class MatchSynopsisSynopsisRepository(val matchSynopsisDao: MatchSynopsisDao) : 
 
     override fun getMatchesFromAPi(accountId: String): Observable<MatchListResponse> {
         return apiService.getMatchList(UrlHelper.buildMatchList(accountId))
-            .doOnNext {
-                insertMatches(it.matches)
+            .doOnNext { response ->
+                response.matches.forEach {
+                    it.accountId = accountId
+                }
+                insertMatches(response.matches)
             }
     }
 
